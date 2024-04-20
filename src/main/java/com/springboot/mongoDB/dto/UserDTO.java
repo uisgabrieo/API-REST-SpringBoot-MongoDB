@@ -65,4 +65,11 @@ public class UserDTO implements Serializable {
 		return Objects.equals(id, other.id);
 	}
 
+	@Override
+	public String toString() {
+		return "UserDTO [id=" + id + ", name=" + name + ", email=" + email + "]";
+	}
+	
+	
+
 }
