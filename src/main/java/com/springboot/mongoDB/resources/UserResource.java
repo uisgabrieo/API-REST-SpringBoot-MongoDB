@@ -2,6 +2,7 @@ package com.springboot.mongoDB.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.springboot.mongoDB.domain.entities.Post;
 import com.springboot.mongoDB.domain.entities.User;
 import com.springboot.mongoDB.dto.UserDTO;
 import com.springboot.mongoDB.service.UserService;
@@ -63,6 +65,13 @@ public class UserResource {
 		user = userService.update(id, user);
 		
 		return ResponseEntity.ok().build();
+	}
+	
+	@GetMapping(value = "/{id}/posts")
+	public ResponseEntity<Set<Post>> findPosts(@PathVariable String id) { 
+		User user = userService.findById(id);
+		Set<Post> posts = user.getPosts();
+		return ResponseEntity.ok().body(posts);
 	}
 	
 }	
