@@ -1,5 +1,6 @@
 package com.springboot.mongoDB.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,18 @@ public class PostService {
 	
 	public List<Post> findByTitle(String text) {
 		return postRepository.findByTitle(text);
+	}
+	
+	public List<Post> fullSearch(String text, LocalDate minDate, LocalDate maxDate) {
+		maxDate = maxDate.plusDays(1);
+		System.out.println("text Service: " + text);
+		System.out.println("minDate Service: " + minDate);
+		System.out.println("maxDate Service: " + maxDate);
+		System.out.println("Antes fullSearch");
+		System.out.println("fullSearch Service: " + postRepository.fullSearch(text, minDate, maxDate));
+		System.out.println("Pós fullSearch");
+		return postRepository.fullSearch(text, minDate, maxDate);
+		
 	}
 }
 
