@@ -5,9 +5,9 @@ import java.net.URLDecoder;
 
 public class URL {
 
-	public static String decodeParam(String txt) {
+	public static String decodeParam(String text) {
 		try {
-			return URLDecoder.decode(txt, "UTF-8");
+			return URLDecoder.decode(text, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			return "";
 		}
